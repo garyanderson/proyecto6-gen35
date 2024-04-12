@@ -1,3 +1,6 @@
+button {
+    background-color: rgba(194, 0, 0, 0.76);
+}
 .container-home {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -6,6 +9,7 @@
 .container-home__input {    
     grid-column: 2;
     text-align: center;
+    margin-bottom: 3em;
 }
 .container-home__filters {    
     grid-row: 3 / 1;

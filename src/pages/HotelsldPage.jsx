@@ -5,6 +5,7 @@ import { Overlay, Map } from "pigeon-maps";
 import OtherHotels from "../components/OtherHotels/OtherHotels";
 import FormReserve from "../components/HotelsIdPage/FormReserve";
 import Slider from "../components/HotelsIdPage/Slider";
+import '../components/style/HotelIdPage.css'
 
 const HotelsldPage = () => {
   const { id } = useParams();
@@ -17,9 +18,9 @@ const HotelsldPage = () => {
   }, [id]);
 
   return (
-    <div>
-      <h2>{hotel?.name}</h2>
-      <h3>RATING - {hotel?.rating}</h3>
+    <div className="hotel">
+      <h2 className="hotel__name">{hotel?.name}</h2>
+      <h3 className="hotel__rating">RATING - {hotel?.rating}</h3>
       <Slider 
         hotel={hotel}
       />
@@ -38,22 +39,22 @@ const HotelsldPage = () => {
           </Map>
         )}
       </div>
-      <section>
-        <h3>
+      <section className="hotel__info">
+        <h3 className="hotel__dats">
           {hotel?.city.name}, {hotel?.city.country}
         </h3>
-        <p>
+        <p className="hotel__dats">
           <i className="bx bx-map"></i>
-          <span>{hotel?.address}</span>
+          <span className="hotel__address">{hotel?.address}</span>
         </p>
-        <p>{hotel?.description}</p>
+        <p className="hotel__description">{hotel?.description}</p>
       </section>
       {localStorage.getItem("token") ? (
         <FormReserve hotelId={hotel?.id} />
       ) : (
-        <h4>
+        <h4 className="hotel__message">
           If you want to make a reservation please{" "}
-          <Link to={"/login"}>login</Link>{" "}
+          <Link className="hotel__link" to={"/login"}>login</Link>{" "}
         </h4>
       )}
       <OtherHotels hotel={hotel} />

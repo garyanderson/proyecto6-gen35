@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import UseAunth from '../hooks/UseAunth.JS'
 import { useForm } from 'react-hook-form'
 import UserLogged from '../components/LoginPage/UserLogged.jsx'
+import '../components/style/Login.css'
 
 const loginPage = () => {
 
@@ -27,17 +28,18 @@ const loginPage = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(submit)}>
-        <label>
-          <span>Email</span>
-          <input {...register('email')} type= "email" id="" />
+    <div className='login'>      
+      <form className='form__login' onSubmit={handleSubmit(submit)}>
+      <p className='login__name'>User</p>
+        <label className='login__label'>
+          <span className='login__span'>Email</span>
+          <input className='login__input' {...register('email')} type= "email" id="" />
         </label>
-        <label>
-          <span>password</span>
-          <input {...register('password')} type= "password" id="" />
+        <label className='login__label'>
+          <span className='login__span'>password</span>
+          <input className='login__input' {...register('password')} type= "password" id="" />
         </label>
-        <button>submit</button>
+        <button className='login__btn'>submit</button>
       </form>
 
     </div>

@@ -16,18 +16,18 @@ const PriceFilter = ({ setFromTo }) => {
     }
 
   return (
-    <section>
-      <h3>Price</h3>
-      <form onClick={handleSubmit(submit)}>
-        <label>
-          <span>From</span>
-          <input {...register('from')} type="number" />
+    <section className="price">
+      <h3 className="price__name">Price</h3>
+      <form className="price__form" onClick={handleSubmit(submit)}>
+        <label className="price__label">
+          <span>From</span><br />
+          <input className="price__input" {...register('from')} type="number" placeholder="$0"/>
         </label>
-        <label>
-          <span>To</span>
-          <input {...register('to')} type="number" />
+        <label className="price__label">
+          <span>To</span><br  />
+          <input className="price__input" {...register('to')} type="number" placeholder="$∞"/>
         </label>
-        <button>Apply</button>
+        <button className="price__button">Apply</button>
       </form>
     </section>
   )

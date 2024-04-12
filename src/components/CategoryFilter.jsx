@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import useFetch from '../hooks/useFetch'
 import { getHotelsThunk } from '../store/states/hotels.slice';
 import {useDispatch} from 'react-redux'
+import './style/Filters.css'
 
 const CategoryFilter = () => {
 
@@ -32,11 +33,11 @@ const CategoryFilter = () => {
   
   return (
     <section className='category__filter'>
-        <h3 className='category__name'>cities</h3>
+        <h3 className='category__name'>Cities</h3>
         <ul className='category__list'>
         <li className='category__item' onClick={() => handleFilterCity()}>all cities</li>
         {cities?.map((city) => (
-           <li onClick={() => handleFilterCity(city.id)} key ={city.id}>{city.name}</li>
+           <li className='category__item' onClick={() => handleFilterCity(city.id)} key ={city.id}>{city.name}</li>
 
         ))}
         </ul>
