@@ -1,33 +1,52 @@
+import { useForm } from "react-hook-form"
+import UseCrud from "../../hooks/UseCrud"
 
-const formReviews = ({ setReserveSelected }) => {
+const formReviews = ({ reserveSelected, setReserveSelected, }) => {
+  
+    const { handleSubmit, register, reset } = useForm()
+
+    const { response, getApi, createApi, deleteApi, updateApi  } = UseCrud()
+
+    const submit = data => {
+        const url ='https://hotels-api.academlo.tech/reviews'
+        data.hotelId = reserveSelected?.hotel.id
+        data.rating = data.rating
+        createApi(url, data)
+        setReserveSelected()
+        
+    }
+
   return (
     <article>
         <h3>reserve</h3>
         <section>
             <header>
-                <img src={setReserveSelected?.hotel.images[0].url} alt="" />
+                <img src={reserveSelected?.hotel.images[0].url} alt="" />
             </header>
-            <h4>{setReserveSelected?.hotel.name}</h4>
-            <p>{setReserveSelected.hotel.city.name}, {setReserveSelected.hotel.city.country}</p>
+            <h4>{reserveSelected?.hotel.name}</h4>
+            <p>{reserveSelected?.hotel.city.name}, {reserveSelected?.hotel.city.country}</p>
             <ul>
-                <li><span>reservation days</span><span>{setReserveSelected.reservationDays}</span></li>
-                <li><span>subtotal price</span><span>{setReserveSelected.subtotal}</span></li>
+                <li><span>reservation days</span><span>{reserveSelected?.reservationDays}</span></li>
+                <li><span>subtotal price</span><span>{reserveSelected?.subtotal}</span></li>
             </ul>
         </section>
-        <label  >
-            <span>Raiting</span>
-            <select name="" id="">
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-        </label>
-        <label  >
-            <span>Coments</span>
-            <textarea />
-        </label>
+            <form onSubmit={handleSubmit(submit)}>
+                <label  >
+                    <span>Raiting</span>
+                    <select {...register('rating')}>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                </label>
+                <span>Coments</span> 
+                <textarea {...register('comment')}/>
+                <button>enviar</button>
+            </form>
+        
+            
     </article>
   )
 }

@@ -28,7 +28,6 @@ const HomePage = () => {
     const filterPrice = price >= fromTo.from && price <= fromTo.to;
     return filterName && filterPrice;
   };
-  console.log(hotels);
   
   return (
     <div className="container-home">

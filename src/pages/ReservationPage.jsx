@@ -1,4 +1,4 @@
-import FormReviews from "../components/ReservationPage/FormReviews"
+import FormReviews from '../components/ReservationPage/FormReviews'
 import ReserveCard from "../components/ReservationPage/ReserveCard"
 import UseCrud from "../hooks/UseCrud"
 import { useEffect, useState } from "react"
@@ -12,14 +12,13 @@ const ReservationPage = () => {
         const url = 'https://hotels-api.academlo.tech/bookings'
         getApi(url)
     }, [])
-    
-    console.log(response)
 
   return (
     <section>
-        <FormReviews 
-            setReserveSelected={setReserveSelected}
-        />
+       <FormReviews 
+        reserveSelected={reserveSelected}
+        setReserveSelected={setReserveSelected}        
+       />
         <h2>reservations</h2>
         <div>
             {
@@ -28,6 +27,7 @@ const ReservationPage = () => {
                 key={reserve.id}
                 reserve={reserve}
                 setReserveSelected={setReserveSelected}
+                deleteApi={deleteApi}
                 />
               ))              
             }
@@ -37,3 +37,8 @@ const ReservationPage = () => {
 }
 
 export default ReservationPage
+{/*
+    <FormReviews 
+    setReserveSelected={setReserveSelected}
+/>*/
+}

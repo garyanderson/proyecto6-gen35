@@ -12,7 +12,6 @@ const CategoryFilter = () => {
     getCities();
    },[]);
 
-   console.log({cities});
 
    const dispatch = useDispatch();
 
